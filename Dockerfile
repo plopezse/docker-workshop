@@ -9,4 +9,4 @@ RUN yum install -y --setopt=tsflags=nodocs httpd && yum clean all
 EXPOSE 80
 VOLUME /var/www/html
 
-CMD ["/usr/sbin/httpd" "-D" "FOREGROUND"]
+CMD ["/usr/sbin/apachectl" "-D" "FOREGROUND"]
