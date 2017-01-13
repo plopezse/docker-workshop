@@ -1,7 +1,12 @@
 # Set the base image to Fedora
-FROM fedora
+FROM docker.io/centos
 
 # File Author / Maintainer
 MAINTAINER "Pedro Lopez" "plopezse@redhat.com"
 
-CMD ["/bin/bash"]
+RUN yum install -y --setopt=tsflags=nodocs httpd && yum clean all
+
+EXPOSE 80
+VOLUME /var/www/html
+
+CMD ["/usr/sbin/httpd" "-D" "FOREGROUND"]
